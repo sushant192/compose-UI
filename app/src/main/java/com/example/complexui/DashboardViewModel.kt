@@ -102,49 +102,49 @@ class DashboardViewModel  : ViewModel() {
 
     fun getSendMoneyDataList(){
         val sendMoneyData:List<imageTextDataClass> =listOf(
-            imageTextDataClass(1,"Send Money",R.drawable.scanner,"Scan","Any Code"),
-            imageTextDataClass(1,"Send Money",R.drawable.scanner,"UPI ID/","Mobile No."),
-            imageTextDataClass(1,"Send Money",R.drawable.scanner,"Bank","Transfer"),
-            imageTextDataClass(1,"Send Money",R.drawable.scanner,"Self","Transfer")
+            imageTextDataClass("Send Money",R.drawable.scanner,"Scan","Any Code"),
+            imageTextDataClass("Send Money",R.drawable.scanner,"UPI ID/","Mobile No."),
+            imageTextDataClass("Send Money",R.drawable.scanner,"Bank","Transfer"),
+            imageTextDataClass("Send Money",R.drawable.scanner,"Self","Transfer")
         )
         viewModelState.update { it.copy(sendMoneyDataList = sendMoneyData) }
     }
 
     fun getContactDataList(){
         val contactData:List<imageTextDataClass> =listOf(
-            imageTextDataClass(2,"Contacts",R.drawable.profile,"Sushant",""),
-            imageTextDataClass(2,"Contacts",R.drawable.profile,"Sushant",""),
-            imageTextDataClass(2,"Contacts",R.drawable.profile,"Sushant",""),
-            imageTextDataClass(2,"Contacts",R.drawable.arrow,"","")
+            imageTextDataClass("Contacts",R.drawable.profile,"Sushant",""),
+            imageTextDataClass("Contacts",R.drawable.profile,"Sushant",""),
+            imageTextDataClass("Contacts",R.drawable.profile,"Sushant",""),
+            imageTextDataClass("Contacts",R.drawable.arrow,"","")
         )
         viewModelState.update { it.copy(contactDataList = contactData) }
     }
 
     fun getRechargeDataList(){
         val rechargeData:List<imageTextDataClass> =listOf(
-            imageTextDataClass(3,"Recharge & Bill Payments",R.drawable.phone,"Mobile",""),
-            imageTextDataClass(3,"Recharge & Bill Payments",R.drawable.phone,"DTH",""),
-            imageTextDataClass(3,"Recharge & Bill Payments",R.drawable.phone,"Electricity",""),
-            imageTextDataClass(3,"Recharge & Bill Payments",R.drawable.arrow,"","")
+            imageTextDataClass("Recharge & Bill Payments",R.drawable.phone,"Mobile",""),
+            imageTextDataClass("Recharge & Bill Payments",R.drawable.phone,"DTH",""),
+            imageTextDataClass("Recharge & Bill Payments",R.drawable.phone,"Electricity",""),
+            imageTextDataClass("Recharge & Bill Payments",R.drawable.arrow,"","")
         )
         viewModelState.update { it.copy(rechargeDataList =  rechargeData) }
     }
 
     fun getGraphicsDataList(){
         val graphicsData:List<imageTextDataClass> =listOf(
-            imageTextDataClass(Int.MAX_VALUE,"Graphics",R.drawable.graphics,"",""),
-            imageTextDataClass(Int.MAX_VALUE,"Graphics",R.drawable.graphics,"",""),
-            imageTextDataClass(Int.MAX_VALUE,"Graphics",R.drawable.graphics,"","")
+            imageTextDataClass("Graphics",R.drawable.graphics,"",""),
+            imageTextDataClass("Graphics",R.drawable.graphics,"",""),
+            imageTextDataClass("Graphics",R.drawable.graphics,"","")
         )
         viewModelState.update { it.copy(graphicsDataList = graphicsData) }
     }
 
     fun getSwitchAppDataList(){
         val switchAppData:List<imageTextDataClass> =listOf(
-            imageTextDataClass(4,"Switch Apps",R.drawable.kfc,"KFC",""),
-            imageTextDataClass(4,"Switch Apps",R.drawable.mcd,"MCD",""),
-            imageTextDataClass(4,"Switch Apps",R.drawable.pizza,"Domino's",""),
-            imageTextDataClass(4,"Switch Apps",R.drawable.arrow,"","")
+            imageTextDataClass("Switch Apps",R.drawable.kfc,"KFC",""),
+            imageTextDataClass("Switch Apps",R.drawable.mcd,"MCD",""),
+            imageTextDataClass("Switch Apps",R.drawable.pizza,"Domino's",""),
+            imageTextDataClass("Switch Apps",R.drawable.arrow,"","")
         )
         viewModelState.update { it.copy(switchAppDataList = switchAppData) }
     }
