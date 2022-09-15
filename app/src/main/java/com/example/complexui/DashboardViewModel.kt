@@ -1,5 +1,6 @@
 package com.example.complexui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.*
@@ -7,7 +8,7 @@ import kotlinx.coroutines.flow.*
 
 sealed interface DashboardUiState {
 
-    var bannerDataList : List<BannerDataClass>
+    var bannerDataList : MutableList<BannerDataClass>
     var sendMoneyDataList : List<imageTextDataClass>
     var contactDataList : List<imageTextDataClass>
     var rechargeDataList : List<imageTextDataClass>
@@ -16,7 +17,7 @@ sealed interface DashboardUiState {
     //var colorChange : Long
 
     data class ToUiState(
-        override var bannerDataList : List<BannerDataClass>,
+        override var bannerDataList : MutableList<BannerDataClass>,
         override var sendMoneyDataList : List<imageTextDataClass>,
         override var contactDataList : List<imageTextDataClass>,
         override var rechargeDataList : List<imageTextDataClass>,
@@ -27,7 +28,7 @@ sealed interface DashboardUiState {
 }
 
 private data class DashBoardViewModelState(
-    var bannerDataList : List<BannerDataClass>,
+    var bannerDataList : MutableList<BannerDataClass>,
     var sendMoneyDataList : List<imageTextDataClass>,
     var contactDataList : List<imageTextDataClass>,
     var rechargeDataList : List<imageTextDataClass>,
@@ -53,7 +54,7 @@ class DashboardViewModel  : ViewModel() {
         MutableStateFlow(
             DashBoardViewModelState(
 
-                bannerDataList = listOf(),
+                bannerDataList = arrayListOf(),
                 sendMoneyDataList = listOf() ,
                 contactDataList= listOf(),
                 rechargeDataList = listOf(),
@@ -88,7 +89,7 @@ class DashboardViewModel  : ViewModel() {
     fun getBannerDataList()
     //:Int
     {
-        val bannerData:List<BannerDataClass> =listOf(
+        val bannerData:MutableList<BannerDataClass> = mutableListOf(
             BannerDataClass(0xFFD0CBD6,"Recharge Due","847438393","Rs520","12 sep 2022"),
             BannerDataClass(0xFFD0CBD6,"Biller Due","847438393","Rs520","12 sep 2022"),
             BannerDataClass(0xFFD0CBD6,"DTH Due","847438393","Rs520","12 sep 2022"),
@@ -146,19 +147,51 @@ class DashboardViewModel  : ViewModel() {
             imageTextDataClass("Switch Apps",R.drawable.pizza,"Domino's",""),
             imageTextDataClass("Switch Apps",R.drawable.arrow,"","")
         )
+
         viewModelState.update { it.copy(switchAppDataList = switchAppData) }
     }
 
-    fun changeBackground() {
-        //val colorChange1=green
+    fun changeBackground(bannerDataClass: BannerDataClass) {
 
-        val bannerData1:List<BannerDataClass> =listOf(
-            BannerDataClass(0xFFBB86FC,"Recharge Due","847438393","Rs520","12 sep 2022"),
-            BannerDataClass(0xFFBB86FC,"Biller Due","847438393","Rs520","12 sep 2022"),
-            BannerDataClass(0xFFBB86FC,"DTH Due","847438393","Rs520","12 sep 2022"),
-            BannerDataClass(0xFFBB86FC,"Broadband Due","847438393","Rs520","12 sep 2022")
-        )
+        bannerDataClass.newColor=0xFFBB86FC
+        bannerDataClass.MobileNumber= 9527721680.toString()
+        val index=uiState.value.bannerDataList.indexOf(bannerDataClass)
 
-        viewModelState.update { it.copy(bannerDataList = bannerData1) }
+        //uiState.value.bannerDataList[index].newColor=0xFFBB86FC
+
+//        val bannerdata2: ArrayList<BannerDataClass> =arrayListOf(
+//            BannerDataClass(0xFFBB86FC,"Biller Due","847438393","Rs520","12 sep 2022"),
+//        )
+//        bannerdata2
+        //val bannerdata3=BannerDataClass(0xFFBB86FC,"Biller Due","847438393","Rs520","12 sep 2022")
+        //uiState.value.bannerDataList.set(index,bannerdata3)
+
+//        Log.d("after function call :",
+//            bannerDataClass.newColor.toString()
+//        )
+
+//        val bannerData1:ArrayList<BannerDataClass> = arrayListOf(
+//            //bannerDataClass,
+//            BannerDataClass(0xFFBB86FC,"Recharge Due","847438393","Rs520","12 sep 2022"),
+//            BannerDataClass(0xFFBB86FC,"Biller Due","847438393","Rs520","12 sep 2022"),
+//            BannerDataClass(0xFFBB86FC,"DTH Due","847438393","Rs520","12 sep 2022"),
+//            BannerDataClass(0xFFBB86FC,"Broadband Due","847438393","Rs520","12 sep 2022")
+//        )
+
+        viewModelState.value.bannerDataList.get(index = index).newColor=0xFFBB86FC
+
+        //val newList:MutableList<BannerDataClass> =uiState.value.bannerDataList
+        //newList.set(index = index,bannerDataClass)
+//        Log.d("Before function call :",
+//            viewModelState.value.bannerDataList.toString()
+//        )
+
+        //viewModelState.update { it.copy(bannerDataList=newList) }
+
+//        val newList1:ArrayList<BannerDataClass> =uiState.value.bannerDataList
+//
+//        Log.d("after function call :",
+//            newList1.toString()
+//        )
     }
 }

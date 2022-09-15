@@ -149,7 +149,9 @@ fun CardAlerts(uiState: DashboardUiState, dashBoardViewModel: DashboardViewModel
 
                     OutlinedButton(
                         //onClick = {colorViewModel.changeBackground(0xFFBB86FC)},
-                        onClick = {dashBoardViewModel.changeBackground()},
+                        //onClick = {dashBoardViewModel.changeBackground(it.copy(newColor = 0xFFBB86FC))},
+                        onClick = {dashBoardViewModel.changeBackground(it)},
+                        //onClick = {dashBoardViewModel.changeBackground()},
                         border = BorderStroke(0.dp, Color.Blue),
                         shape = RoundedCornerShape(50),
                         colors = ButtonDefaults.outlinedButtonColors(
